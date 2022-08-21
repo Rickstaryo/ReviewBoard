@@ -1,0 +1,23 @@
+server:
+  servlet:
+    session:
+      tracking-modes:
+      - cookie
+      
+spring:
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: member
+    password: 1234
+    driver-class-name: oracle.jdbc.OracleDriver
+  servlet:
+    multipart:
+      max-file-size:
+        100MB
+      max-request-size:
+        500MB
+
+mybatis:
+  config-location: classpath:Mybatis-Config.xml
+  mapper-locations:
+  - classpath:Mapper/**/*.xml
