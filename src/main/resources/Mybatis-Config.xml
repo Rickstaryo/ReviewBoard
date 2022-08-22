@@ -5,5 +5,6 @@
   <configuration>
   <typeAliases>
 	<typeAlias type="com.example.file.Model.Member" alias ="member"></typeAlias>
+	<typeAlias type="com.example.file.Model.Board" alias ="board"></typeAlias>
   </typeAliases>
   </configuration>

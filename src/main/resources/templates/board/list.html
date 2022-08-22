@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div id="container">
+        <h2 class="center">[ 게시판 ]</h2>
+        <p class="right">
+            <span th:if="session.loginMember" th:text="|${session.loginMember.name}님 환영합니다. |"></span>
+            <a th:href="@{/member/logout}" th:text="로그아웃"></a>
+        </p>
+        <p class="left">
+            <input type="button" value="매인으로" onclick="location.href='/'">
+            <input type="button" value="글쓰기" onclick="location.href='/board/write'">
+        </p>
+        </div>
+</body>
+</html>

@@ -19,4 +19,10 @@ public class MemberService {
 		memberMapper.saveMember(member);
 	}
 
+    public Member findMember(Member member) {
+        return memberMapper.findMemberByIdAndPassword(member);
+    }
+
+
+
 }

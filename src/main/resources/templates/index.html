@@ -5,10 +5,18 @@
 <title>Insert title here</title>
 </head>
 <body>
- <ul>
+    <th:block th:unless="${session.loginMember}">
+        <ul>
             <li><a href="/member/join">회원가입</a></li>
             <li><a href="/member/login">로그인</a></li>
         </ul>
+    </th:block>
+    <th:block th:if="${session.loginMember}">
+        <ul>
+            <li><a href="/member/logout">로그아웃</a></li>
+            <li><a href="/board/list">게시판</a></li>
+        </ul>
+    </th:block>
 
 </body>
 </html>

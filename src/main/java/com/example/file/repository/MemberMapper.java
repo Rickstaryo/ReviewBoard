@@ -8,4 +8,7 @@ public interface MemberMapper {
 
 	public void saveMember(Member member);
 
+	public Member findMemberByIdAndPassword(Member member);
+
+
 }

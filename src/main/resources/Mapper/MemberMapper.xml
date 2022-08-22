@@ -20,5 +20,14 @@
 			#{email}
 		)
   </insert>
+      <!-- 회원정보 검색(ID) -->
+    <select id="findMemberById" parameterType="string" resultType="member">
+		select * from tb_member where id = #{id} and password = #{password}
+	</select>
+
+    <!-- 회원정보 검색(ID, PW) -->
+	<select id="findMemberByIdAndPassword" parameterType="member" resultType="member">
+		select * from tb_member where id = #{id} and password = #{password}
+	</select>
   
   </mapper>
