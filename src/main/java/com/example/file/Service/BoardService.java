@@ -21,5 +21,35 @@ public class BoardService {
 	public List<Board> findAllBoards() {
 		return boardMapper.findAllBoards() ;
 	}
+
+	public void saveBoard(Board board) {
+	 boardMapper.saveBoard(board);
+	}
+
+	public Board findBoardById(long id) {
+		return boardMapper.findBoardById(id);
+	}
+
+	public Board readBoard(long id) {
+		Board findBoard = boardMapper.findBoardById(id);
+		findBoard.addHit();
+		boardMapper.updateBoard(findBoard);
+		return findBoard;
+	}
+	
+    // 게시물 수정
+    public void updateBoard(Board board) {
+        boardMapper.updateBoard(board);
+    }
+
+
+	public void removeBoard(long id) {
+		 boardMapper.removeBoard(id);
+		
+	}
+
+	
+
+
 	
 }

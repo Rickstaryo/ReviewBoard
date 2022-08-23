@@ -4,6 +4,10 @@ import java.time.LocalDateTime;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+
+import lombok.Data;
+
+@Data
 public class Board {
     private long id;
     private String title;
@@ -18,5 +22,11 @@ public class Board {
     public void addHit() {
         hit += 1;
     }
-
+    public UpdataBoardForm toUpdateForm() {
+        UpdataBoardForm updateBoardForm = new UpdataBoardForm();
+        updateBoardForm.setId(id);
+        updateBoardForm.setTitle(title);
+        updateBoardForm.setContent(content);
+        return updateBoardForm;
+    }
 }

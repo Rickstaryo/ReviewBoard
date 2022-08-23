@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html xmlns:th="http://wwww.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/default.css">
 </head>
 <body>
     <div id="container">
@@ -15,6 +16,29 @@
             <input type="button" value="매인으로" onclick="location.href='/'">
             <input type="button" value="글쓰기" onclick="location.href='/board/write'">
         </p>
-        </div>
+        <table>
+            <tr>
+                <th>No.</th>
+                <th>제목</th>
+                <th>작성일</th>
+                <th>조회수</th>
+                <th>작성자</th>
+            </tr>
+            <th:block th:unless="${boards}">
+                <tr>
+                    <td class="center" colspan="5">등록된 게시물이 없습니다.</td>
+                </tr>
+            </th:block>
+            <th:block th:if="${boards}">
+                <tr th:each="board, boardStat : ${boards}">
+                    <td th:class="center" th:text="${boardStat.count}"></td>
+                    <td><a th:href="@{/board/read/{id}(id=${board.id})}" th:text="${board.title}"></a></td>
+                    <td th:class="center" th:text="${#temporals.format(board.inputTime, 'yyyy-MM-dd')}"></td>
+                    <td th:class="center" th:text="${board.hit}"></td>
+                    <td th:class="center" th:text="${board.member_id}"></td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
 </body>
 </html>

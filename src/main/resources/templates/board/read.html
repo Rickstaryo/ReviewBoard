@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://wwww.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+    <div id="container">
+        <h2 class="center">[ 글 읽기 ]</h2>
+        <table th:object="${board}">
+            <tr>
+                <th>글 번호</th>
+                <td>
+                    <span th:text="*{id}"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>제목</th>
+                <td>
+                    <span th:text="*{title}"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>내용</th>
+                <td><span th:utext="*{content}"></span></td>
+            </tr>
+            <tr>
+                <th>조회수</th>
+                <td>
+                    <span th:text="*{hit}"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>작성자</th>
+                <td>
+                    <span th:text="*{member_id}"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>등록일</th>
+                <td>
+                    <span th:text="${#temporals.format(board.inputTime, 'yyyy-MM-dd, hh:mm:ss')}"></span>
+                </td>
+            </tr>
+            <tr>
+                <th>수정일</th>
+                <td>
+                    <span th:text="${#temporals.format(board.updateTime, 'yyyy-MM-dd, hh:mm:ss')}"></span>
+                </td>
+            </tr>
+        </table>
+        <p class="center">
+            <input type="button" value="목록으로" onclick="location.href='/board/list'">
+            <th:block th:if="${board.member_id == session.loginMember.id}">
+                <input type="button" value="수정하기" th:onclick="|location.href='/board/update/${board.id}'|"> 
+                <input type="button" value="삭제하기" th:onclick="|location.href='/board/remove/${board.id}'|"> 
+            </th:block>
+        </p>
+    </div>
+</body>
+</html>

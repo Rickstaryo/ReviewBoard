@@ -7,7 +7,44 @@
 	<select id="findAllBoards" resultType="board">
 		select * from tb_board order by inputTime desc
 	</select> 
+
+
+	<!-- Inserting the board
+	 -->
+	<insert id="saveBoard" parameterType="board" >
+		<selectKey keyProperty="id" resultType="int" order="BEFORE">
+    		select seq_board.nextval from dual
+  		</selectKey>
+		insert into tb_board (
+			id,
+			title,
+			content,
+			member_id
+		) values (
+			#{id},
+			#{title},
+			#{content},
+			#{member_id}
+		)
+	</insert>
  
+	<!--  게시물 읽기
+	 --> 
+	<select id="findBoardById" parameterType="long" resultType="board">
+		select * from tb_board where id = #{id}
+	</select>
+ 	<update id="updateBoard" parameterType="board">
+		update tb_board
+		<set>
+			title = #{title},
+			content = #{content},
+			hit = #{hit},
+			updateTime = #{updateTime}
+		</set>
+		where id = #{id}
+	</update>
  
- 
+	 <delete id="removeBoard" parameterType="long">
+	delete from tb_board where id = #{id}
+	 </delete>
   </mapper>
